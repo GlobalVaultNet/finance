@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Payoff Calculator 2026 | Free Debt Elimination Planner</title>
+    <meta name="description" content="Free credit card payoff calculator. Create a debt elimination plan, calculate payoff timelines, and see how much interest you can save with extra payments. Get debt-free faster.">
+    <meta name="keywords" content="credit card payoff calculator, debt payoff calculator, credit card debt calculator, eliminate credit card debt, debt free calculator, credit card interest calculator">
+    <meta name="author" content="GlobalVaultNet Finance">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://globalvaultnet.github.io/finance/credit-card.html">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "name": "Credit Card Payoff Calculator",
+        "description": "Free online credit card debt payoff calculator with payment planning",
+        "provider": {
+            "@type": "Organization",
+            "name": "GlobalVaultNet Finance"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How is credit card interest calculated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Credit card interest is typically calculated using the average daily balance method. The APR is divided by 365 to get the daily rate, then multiplied by your average daily balance and the number of days in the billing cycle. Interest compounds daily, which is why credit card debt grows so quickly."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the best strategy to pay off credit card debt?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The avalanche method (paying highest interest first) saves the most money mathematically. The snowball method (paying smallest balance first) provides psychological wins that help maintain motivation. Both work - choose the one you'll stick with. Always pay more than the minimum."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I use a balance transfer to pay off debt?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Balance transfers can be effective if you qualify for a 0% APR offer and can pay off the balance before the promotional rate expires. Watch for transfer fees (typically 3-5%) and avoid making new purchases on the transferred card. Have a payoff plan before transferring."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does making only minimum payments affect debt?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Making only minimum payments dramatically extends payoff time and increases total interest paid. A $5,000 balance at 18% APR with minimum payments could take over 20 years to pay off and cost thousands in interest. Always pay as much above the minimum as possible."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will paying off credit cards improve my credit score?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Paying down credit card balances typically improves your credit score by lowering your credit utilization ratio - the percentage of available credit you're using. Keeping utilization below 30% helps scores, and below 10% is ideal. Consistent on-time payments also boost scores."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I close credit cards after paying them off?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Generally, keep paid-off cards open unless they have annual fees. Closing accounts reduces your available credit, which can increase utilization and hurt your score. The age of accounts also factors into credit scores. Consider keeping old accounts open even if unused."
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .nav {
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .nav a {
+            color: #ff416c;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .calculator-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .ad-container {
+            text-align: center;
+            margin: 20px 0;
+            min-height: 90px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #ff416c;
+        }
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-radius: 10px;
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #ef9a9a;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .result-label {
+            font-weight: 600;
+            color: #555;
+        }
+        .result-value {
+            font-weight: bold;
+            color: #c62828;
+            font-size: 1.1rem;
+        }
+        .highlight {
+            background: #c62828;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .highlight .result-value {
+            color: white;
+        }
+        .savings-box {
+            background: #2e7d32;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .savings-box h3 {
+            margin-bottom: 10px;
+        }
+        .savings-amount {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .content-section h2 {
+            color: #c62828;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .content-section h3 {
+            color: #555;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+        }
+        .content-section p {
+            margin-bottom: 15px;
+            color: #444;
+            line-height: 1.8;
+        }
+        .faq-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #ffebee;
+            border-radius: 10px;
+            border-left: 4px solid #c62828;
+        }
+        .faq-item h4 {
+            color: #c62828;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .faq-item p {
+            margin: 0;
+            color: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            margin-top: 40px;
+        }
+        .disclaimer {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .calculator-card, .content-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Back to GlobalVaultNet Finance Hub</a>
+        </div>
+
+        <div class="calculator-card">
+            <h1>Credit Card Payoff Calculator</h1>
+            <p class="subtitle">Create a plan to eliminate your credit card debt and save on interest</p>
+            
+            <div class="ad-container">
+                <script async="async" data-cfasync="false" src="https://pl28822091.effectivegatecpm.com/e9472f96295f54607e4ac09ffb523e78/invoke.js"></script>
+                <div id="container-e9472f96295f54607e4ac09ffb523e78"></div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="balance">Current Balance ($)</label>
+                    <input type="number" id="balance" placeholder="5000" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="apr">Annual APR (%)</label>
+                    <input type="number" id="apr" placeholder="18.99" step="0.01" min="0" max="50">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="minPaymentPercent">Minimum Payment (% of balance)</label>
+                    <input type="number" id="minPaymentPercent" placeholder="2" step="0.1" min="0" max="10">
+                </div>
+                <div class="input-group">
+                    <label for="minPaymentAmount">Or Fixed Minimum Payment ($)</label>
+                    <input type="number" id="minPaymentAmount" placeholder="100" min="0">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="extraPayment">Extra Monthly Payment ($)</label>
+                <input type="number" id="extraPayment" placeholder="50" min="0">
+            </div>
+
+            <div class="ad-container">
+                <script>atOptions = {'key' : '940c50b8e7b247ca4853fb94d90731b4','format' : 'iframe','height' : 90,'width' : 728,'params' : {}};</script>
+                <script src="https://www.highperformanceformat.com/940c50b8e7b247ca4853fb94d90731b4/invoke.js"></script>
+            </div>
+
+            <button onclick="calculatePayoff()">Calculate Payoff Plan</button>
+
+            <div class="results" id="results">
+                <div class="result-item">
+                    <span class="result-label">Months to Payoff:</span>
+                    <span class="result-value" id="monthsToPayoff">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Total Interest Paid:</span>
+                    <span class="result-value" id="totalInterest">$0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Total Amount Paid:</span>
+                    <span class="result-value" id="totalPaid">$0</span>
+                </div>
+                <div class="result-item highlight">
+                    <span class="result-label">Payoff Date:</span>
+                    <span class="result-value" id="payoffDate">-</span>
+                </div>
+            </div>
+
+            <div class="savings-box" id="savingsBox" style="display: none;">
+                <h3>Interest Saved with Extra Payments</h3>
+                <div class="savings-amount" id="interestSaved">$0</div>
+            </div>
+
+            <div class="ad-container">
+                <script async="async" data-cfasync="false" src="https://pl28822091.effectivegatecpm.com/e9472f96295f54607e4ac09ffb523e78/invoke.js"></script>
+                <div id="container-e9472f96295f54607e4ac09ffb523e78"></div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Breaking Free from Credit Card Debt</h2>
+            <p>Credit card debt is one of the most financially destructive burdens many people face. With interest rates often exceeding 20%, carrying a balance can cost thousands in interest and take decades to eliminate if only minimum payments are made. The good news is that with a strategic approach and consistent effort, you can break free from credit card debt and reclaim your financial future.</p>
+            
+            <p>The first step in eliminating credit card debt is understanding exactly what you're dealing with. Gather all your credit card statements and note each balance, interest rate, and minimum payment. This complete picture, while potentially uncomfortable to confront, is essential for creating an effective payoff strategy. Knowledge is power when it comes to debt elimination.</p>
+
+            <h3>Understanding How Credit Card Interest Works</h3>
+            <p>Credit card interest is calculated using the average daily balance method, which means interest accrues every single day on your outstanding balance. The Annual Percentage Rate (APR) is divided by 365 to determine the daily periodic rate, which is then applied to your average daily balance. This daily compounding is why credit card debt grows so aggressively and why paying off balances quickly is so important.</p>
+
+            <p>Most credit cards have a grace period - typically 21-25 days - during which you can pay your balance in full without incurring interest. However, once you carry a balance, this grace period typically disappears, and interest begins accruing immediately on new purchases. This is another reason why paying in full each month is so valuable.</p>
+
+            <h3>Debt Payoff Strategies That Work</h3>
+            <p>Two primary strategies dominate debt payoff discussions: the avalanche method and the snowball method. The avalanche method prioritizes paying off the highest interest rate debt first while making minimum payments on others. Mathematically, this approach saves the most money in interest payments. Once the highest-rate card is paid off, you redirect that payment to the next highest-rate card.</p>
+
+            <p>The snowball method, popularized by Dave Ramsey, focuses on paying off the smallest balance first, regardless of interest rate. While this may cost more in interest, the psychological wins of eliminating entire debts quickly can provide motivation to continue. For many people, the snowball method's behavioral advantages outweigh its mathematical inefficiency. Choose the approach you're most likely to stick with.</p>
+
+            <h3>Accelerating Your Debt Freedom</h3>
+            <p>Several tactics can accelerate your debt payoff timeline. Balance transfer cards offering 0% introductory APR can provide breathing room, though transfer fees (typically 3-5%) and post-promotional rates must be considered. Personal loans with lower interest rates can consolidate high-rate debt into a single payment with a fixed payoff date.</p>
+
+            <p>Increasing your income through side work, selling unused items, or negotiating a raise can provide extra funds for debt elimination. Simultaneously, reducing expenses frees up more money for payments. Every extra dollar applied to principal reduces the interest you'll pay and brings your debt-free date closer. Even small additional payments compound into significant savings over time.</p>
+
+            <h3>Staying Debt-Free for Good</h3>
+            <p>Eliminating credit card debt is a significant achievement, but staying debt-free requires ongoing discipline. Build an emergency fund to handle unexpected expenses without resorting to credit. Use credit cards strategically - for convenience, rewards, and building credit - but pay balances in full each month. If you can't pay cash for something, you probably can't afford it.</p>
+
+            <p>Review your spending regularly and maintain a budget that aligns with your values and goals. Consider leaving credit cards at home if temptation is an issue, or use them only for specific categories like gas and groceries. The habits you build while paying off debt will serve you well in maintaining your debt-free status.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Frequently Asked Questions About Credit Card Debt</h2>
+            
+            <div class="faq-item">
+                <h4>How is credit card interest calculated?</h4>
+                <p>Credit card interest is typically calculated using the average daily balance method. The APR is divided by 365 to get the daily rate, then multiplied by your average daily balance and the number of days in the billing cycle. Interest compounds daily, which is why credit card debt grows so quickly. Paying even a few days early can reduce interest charges.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What is the best strategy to pay off credit card debt?</h4>
+                <p>The avalanche method (paying highest interest first) saves the most money mathematically. The snowball method (paying smallest balance first) provides psychological wins that help maintain motivation. Both work - choose the one you'll stick with. Always pay more than the minimum, and consider balance transfers or consolidation loans to lower interest rates.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Should I use a balance transfer to pay off debt?</h4>
+                <p>Balance transfers can be effective if you qualify for a 0% APR offer and can pay off the balance before the promotional rate expires (typically 12-21 months). Watch for transfer fees (typically 3-5%) and avoid making new purchases on the transferred card. Have a payoff plan before transferring - don't just move debt around indefinitely.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How does making only minimum payments affect debt?</h4>
+                <p>Making only minimum payments dramatically extends payoff time and increases total interest paid. A $5,000 balance at 18% APR with minimum payments could take over 20 years to pay off and cost $7,000+ in interest. Credit card companies set minimums low to maximize their interest income. Always pay as much above the minimum as possible.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Will paying off credit cards improve my credit score?</h4>
+                <p>Paying down credit card balances typically improves your credit score by lowering your credit utilization ratio - the percentage of available credit you're using. Keeping utilization below 30% helps scores, and below 10% is ideal. Consistent on-time payments also boost scores. However, closing paid-off accounts can temporarily hurt your score by reducing available credit.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Should I close credit cards after paying them off?</h4>
+                <p>Generally, keep paid-off cards open unless they have annual fees. Closing accounts reduces your available credit, which can increase utilization and hurt your score. The age of accounts also factors into credit scores - older accounts help your score. Consider keeping old accounts open even if unused, making small purchases periodically to keep them active.</p>
+            </div>
+        </div>
+
+        <div class="ad-container">
+            <script>atOptions = {'key' : '940c50b8e7b247ca4853fb94d90731b4','format' : 'iframe','height' : 90,'width' : 728,'params' : {}};</script>
+            <script src="https://www.highperformanceformat.com/940c50b8e7b247ca4853fb94d90731b4/invoke.js"></script>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 GlobalVaultNet Finance. All rights reserved.</p>
+            <div class="disclaimer">
+                <p><strong>Financial Disclaimer:</strong> The calculators and content on this website are provided for informational and educational purposes only. They do not constitute financial, legal, or professional advice. Results are estimates based on the information you provide and may not reflect actual outcomes. Interest rates, market conditions, and personal circumstances vary. Always consult with qualified financial advisors, lenders, or tax professionals before making significant financial decisions. GlobalVaultNet Finance is not responsible for any actions taken based on the information provided by these tools.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function calculatePayoff() {
+            let balance = parseFloat(document.getElementById('balance').value) || 0;
+            const apr = parseFloat(document.getElementById('apr').value) || 0;
+            const minPaymentPercent = parseFloat(document.getElementById('minPaymentPercent').value) || 0;
+            const minPaymentAmount = parseFloat(document.getElementById('minPaymentAmount').value) || 0;
+            const extraPayment = parseFloat(document.getElementById('extraPayment').value) || 0;
+
+            const monthlyRate = apr / 100 / 12;
+            let months = 0;
+            let totalInterest = 0;
+            let currentBalance = balance;
+
+            // Calculate with current payment plan
+            while (currentBalance > 0 && months < 600) {
+                months++;
+                
+                // Calculate minimum payment
+                let minPayment;
+                if (minPaymentAmount > 0) {
+                    minPayment = Math.max(minPaymentAmount, currentBalance * (minPaymentPercent / 100));
+                } else {
+                    minPayment = Math.max(25, currentBalance * (minPaymentPercent / 100) || currentBalance * 0.02);
+                }
+                
+                const payment = minPayment + extraPayment;
+                const interest = currentBalance * monthlyRate;
+                totalInterest += interest;
+                
+                let principalPayment = payment - interest;
+                if (principalPayment > currentBalance) {
+                    principalPayment = currentBalance;
+                }
+                
+                currentBalance -= principalPayment;
+                if (currentBalance < 0.01) currentBalance = 0;
+            }
+
+            const totalPaid = balance + totalInterest;
+            
+            // Calculate payoff date
+            const today = new Date();
+            const payoffDate = new Date(today.getFullYear(), today.getMonth() + months, 1);
+            const payoffDateStr = payoffDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+            document.getElementById('monthsToPayoff').textContent = months;
+            document.getElementById('totalInterest').textContent = '$' + totalInterest.toFixed(2);
+            document.getElementById('totalPaid').textContent = '$' + totalPaid.toFixed(2);
+            document.getElementById('payoffDate').textContent = payoffDateStr;
+
+            // Calculate savings from extra payments
+            if (extraPayment > 0) {
+                let minMonths = 0;
+                let minTotalInterest = 0;
+                let minBalance = balance;
+
+                while (minBalance > 0 && minMonths < 600) {
+                    minMonths++;
+                    let minPayment;
+                    if (minPaymentAmount > 0) {
+                        minPayment = Math.max(minPaymentAmount, minBalance * (minPaymentPercent / 100));
+                    } else {
+                        minPayment = Math.max(25, minBalance * (minPaymentPercent / 100) || minBalance * 0.02);
+                    }
+                    
+                    const interest = minBalance * monthlyRate;
+                    minTotalInterest += interest;
+                    
+                    let principalPayment = minPayment - interest;
+                    if (principalPayment > minBalance) {
+                        principalPayment = minBalance;
+                    }
+                    
+                    minBalance -= principalPayment;
+                    if (minBalance < 0.01) minBalance = 0;
+                }
+
+                const interestSaved = minTotalInterest - totalInterest;
+                document.getElementById('interestSaved').textContent = '$' + interestSaved.toFixed(2);
+                document.getElementById('savingsBox').style.display = 'block';
+            } else {
+                document.getElementById('savingsBox').style.display = 'none';
+            }
+
+            document.getElementById('results').classList.add('show');
+        }
+    </script>
+</body>
+</html>

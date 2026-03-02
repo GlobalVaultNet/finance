@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Calculator 2026 | Free Home Loan Payment Calculator & Amortization</title>
+    <meta name="description" content="Free mortgage calculator to estimate monthly home loan payments, total interest costs, and amortization schedules. Compare 15-year vs 30-year mortgages. Plan your home purchase.">
+    <meta name="keywords" content="mortgage calculator, home loan calculator, monthly mortgage payment, amortization schedule, interest calculator, house payment estimator, mortgage rates 2026">
+    <meta name="author" content="GlobalVaultNet Finance">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://globalvaultnet.github.io/finance/mortgage.html">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "name": "Mortgage Calculator",
+        "description": "Free online mortgage calculator for estimating home loan payments",
+        "provider": {
+            "@type": "Organization",
+            "name": "GlobalVaultNet Finance"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How is monthly mortgage payment calculated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Monthly mortgage payments are calculated using the loan amount, interest rate, and loan term. The formula considers compound interest over the loan period, dividing the total cost into equal monthly installments that cover both principal and interest."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between 15-year and 30-year mortgages?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A 15-year mortgage has higher monthly payments but lower total interest costs and builds equity faster. A 30-year mortgage has lower monthly payments but higher total interest over the life of the loan, making it more expensive long-term."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much down payment do I need for a house?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Conventional loans typically require 20% down to avoid PMI, but FHA loans allow as little as 3.5% down. VA and USDA loans may offer zero-down options for qualified buyers. Larger down payments reduce monthly payments and total interest."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is PMI and when is it required?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Private Mortgage Insurance (PMI) protects lenders when borrowers put down less than 20%. It typically costs 0.3% to 1.5% of the loan amount annually and is added to monthly payments until you reach 20% equity in your home."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I pay extra toward my mortgage principal?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Paying extra toward principal can save significant interest and shorten your loan term. However, consider your overall financial situation first - high-interest debt, emergency funds, and retirement contributions may take priority over extra mortgage payments."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do property taxes affect my mortgage payment?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Property taxes are often included in your monthly mortgage payment through an escrow account. Lenders collect 1/12 of the annual tax bill monthly, holding funds in escrow until tax payments are due. This ensures taxes are paid on time."
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .nav {
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .calculator-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .ad-container {
+            text-align: center;
+            margin: 20px 0;
+            min-height: 90px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .result-label {
+            font-weight: 600;
+            color: #555;
+        }
+        .result-value {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .content-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .content-section h3 {
+            color: #555;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+        }
+        .content-section p {
+            margin-bottom: 15px;
+            color: #444;
+            line-height: 1.8;
+        }
+        .faq-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        .faq-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .faq-item p {
+            margin: 0;
+            color: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            margin-top: 40px;
+        }
+        .disclaimer {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .calculator-card, .content-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Back to GlobalVaultNet Finance Hub</a>
+        </div>
+
+        <div class="calculator-card">
+            <h1>Mortgage Calculator</h1>
+            <p class="subtitle">Calculate your monthly home loan payments and total interest costs</p>
+            
+            <div class="ad-container">
+                <script async="async" data-cfasync="false" src="https://pl28822091.effectivegatecpm.com/e9472f96295f54607e4ac09ffb523e78/invoke.js"></script>
+                <div id="container-e9472f96295f54607e4ac09ffb523e78"></div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="loanAmount">Loan Amount ($)</label>
+                    <input type="number" id="loanAmount" placeholder="300000" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="downPayment">Down Payment ($)</label>
+                    <input type="number" id="downPayment" placeholder="60000" min="0">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="interestRate">Annual Interest Rate (%)</label>
+                    <input type="number" id="interestRate" placeholder="6.5" step="0.01" min="0" max="30">
+                </div>
+                <div class="input-group">
+                    <label for="loanTerm">Loan Term (Years)</label>
+                    <input type="number" id="loanTerm" placeholder="30" min="1" max="50">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="propertyTax">Annual Property Tax ($)</label>
+                <input type="number" id="propertyTax" placeholder="3600" min="0">
+            </div>
+
+            <div class="ad-container">
+                <script>atOptions = {'key' : '940c50b8e7b247ca4853fb94d90731b4','format' : 'iframe','height' : 90,'width' : 728,'params' : {}};</script>
+                <script src="https://www.highperformanceformat.com/940c50b8e7b247ca4853fb94d90731b4/invoke.js"></script>
+            </div>
+
+            <button onclick="calculateMortgage()">Calculate Mortgage Payment</button>
+
+            <div class="results" id="results">
+                <div class="result-item">
+                    <span class="result-label">Monthly Principal & Interest:</span>
+                    <span class="result-value" id="monthlyPI">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Monthly Property Tax:</span>
+                    <span class="result-value" id="monthlyTax">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Total Monthly Payment:</span>
+                    <span class="result-value" id="totalMonthly">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Total Interest Paid:</span>
+                    <span class="result-value" id="totalInterest">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Total Cost of Loan:</span>
+                    <span class="result-value" id="totalCost">$0.00</span>
+                </div>
+            </div>
+
+            <div class="ad-container">
+                <script async="async" data-cfasync="false" src="https://pl28822091.effectivegatecpm.com/e9472f96295f54607e4ac09ffb523e78/invoke.js"></script>
+                <div id="container-e9472f96295f54607e4ac09ffb523e78"></div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Understanding Mortgage Calculations</h2>
+            <p>A mortgage is likely the largest financial commitment most people will ever make. Understanding how mortgage payments are calculated empowers you to make informed decisions about homeownership, compare loan offers effectively, and plan your long-term financial future with confidence.</p>
+            
+            <p>The fundamental components of any mortgage calculation include the principal amount (the actual loan balance), the interest rate (the cost of borrowing), and the loan term (the repayment period). These three factors work together to determine your monthly payment obligation and the total cost of financing your home purchase.</p>
+
+            <h3>How Mortgage Interest Works</h3>
+            <p>Mortgage interest is typically calculated using compound interest formulas, where interest accrues on both the principal balance and accumulated interest from previous periods. In the early years of your mortgage, a larger portion of each payment goes toward interest rather than principal reduction. This is known as amortization, and it means that building equity in your home happens gradually at first, then accelerates as the loan matures.</p>
+
+            <p>Understanding amortization helps homeowners recognize the value of making extra principal payments, especially in the early years of a mortgage. Even modest additional payments can significantly reduce the total interest paid over the life of the loan and shorten the repayment period by years.</p>
+
+            <h3>Factors That Affect Your Mortgage Rate</h3>
+            <p>Several factors influence the interest rate you'll receive on your mortgage. Your credit score is perhaps the most significant, with higher scores qualifying for lower rates. The loan-to-value ratio (LTV), which compares your loan amount to the property's value, also plays a crucial role. Borrowers who make larger down payments typically receive better rates because they present less risk to lenders.</p>
+
+            <p>Other factors include the loan type (conventional, FHA, VA, or USDA), the loan term (15-year versus 30-year), current market conditions, and whether you choose a fixed or adjustable rate. Economic indicators such as the Federal Reserve's monetary policy, inflation rates, and the overall health of the housing market all contribute to the interest rate environment.</p>
+
+            <h3>The True Cost of Homeownership</h3>
+            <p>While your mortgage payment is the largest component of homeownership costs, it's far from the only expense. Property taxes, which vary significantly by location, can add hundreds of dollars to your monthly payment. Homeowners insurance protects your investment and is typically required by lenders. Private mortgage insurance (PMI) applies when your down payment is less than 20% of the purchase price.</p>
+
+            <p>Additionally, homeowners must budget for maintenance and repairs, which typically cost 1-3% of the home's value annually. Utilities, homeowners association fees, and potential renovation costs should also factor into your affordability calculations. A comprehensive understanding of these expenses helps prevent financial strain and ensures sustainable homeownership.</p>
+
+            <h3>Strategies for Mortgage Optimization</h3>
+            <p>Smart borrowers employ various strategies to optimize their mortgage costs. Shopping around with multiple lenders can reveal significant rate differences. Improving your credit score before applying can qualify you for better terms. Making a larger down payment reduces your loan amount and may eliminate PMI requirements.</p>
+
+            <p>Consider the trade-offs between 15-year and 30-year mortgages carefully. While 15-year loans offer lower rates and faster equity building, the higher monthly payments may strain your budget. Some borrowers opt for 30-year loans but make extra payments when possible, providing flexibility while still reducing total interest costs.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Frequently Asked Questions About Mortgages</h2>
+            
+            <div class="faq-item">
+                <h4>How is monthly mortgage payment calculated?</h4>
+                <p>Monthly mortgage payments are calculated using the loan amount, interest rate, and loan term. The formula considers compound interest over the loan period, dividing the total cost into equal monthly installments that cover both principal and interest. Our calculator uses the standard amortization formula: M = P[r(1+r)^n]/[(1+r)^n-1], where M is the monthly payment, P is the principal, r is the monthly interest rate, and n is the number of payments.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What is the difference between 15-year and 30-year mortgages?</h4>
+                <p>A 15-year mortgage has higher monthly payments but lower total interest costs and builds equity faster. You'll own your home outright in half the time and typically receive a lower interest rate. A 30-year mortgage has lower monthly payments but higher total interest over the life of the loan, making it more expensive long-term. The choice depends on your cash flow, financial goals, and risk tolerance.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How much down payment do I need for a house?</h4>
+                <p>Conventional loans typically require 20% down to avoid PMI, but FHA loans allow as little as 3.5% down. VA and USDA loans may offer zero-down options for qualified buyers. Larger down payments reduce monthly payments and total interest. However, depleting your savings for a down payment can leave you vulnerable to unexpected expenses, so balance is key.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What is PMI and when is it required?</h4>
+                <p>Private Mortgage Insurance (PMI) protects lenders when borrowers put down less than 20%. It typically costs 0.3% to 1.5% of the loan amount annually and is added to monthly payments until you reach 20% equity in your home. Once you have sufficient equity, you can request PMI cancellation, or it will automatically terminate when your loan balance reaches 78% of the original home value.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Should I pay extra toward my mortgage principal?</h4>
+                <p>Paying extra toward principal can save significant interest and shorten your loan term. However, consider your overall financial situation first - high-interest debt, emergency funds, and retirement contributions may take priority over extra mortgage payments. If you do make extra payments, specify they should apply to principal, and consider whether investing those funds might yield better returns.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How do property taxes affect my mortgage payment?</h4>
+                <p>Property taxes are often included in your monthly mortgage payment through an escrow account. Lenders collect 1/12 of the annual tax bill monthly, holding funds in escrow until tax payments are due. This ensures taxes are paid on time and protects the lender's interest in the property. Tax amounts vary by location and can increase over time, affecting your total monthly payment.</p>
+            </div>
+        </div>
+
+        <div class="ad-container">
+            <script>atOptions = {'key' : '940c50b8e7b247ca4853fb94d90731b4','format' : 'iframe','height' : 90,'width' : 728,'params' : {}};</script>
+            <script src="https://www.highperformanceformat.com/940c50b8e7b247ca4853fb94d90731b4/invoke.js"></script>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 GlobalVaultNet Finance. All rights reserved.</p>
+            <div class="disclaimer">
+                <p><strong>Financial Disclaimer:</strong> The calculators and content on this website are provided for informational and educational purposes only. They do not constitute financial, legal, or professional advice. Results are estimates based on the information you provide and may not reflect actual outcomes. Interest rates, market conditions, and personal circumstances vary. Always consult with qualified financial advisors, lenders, or tax professionals before making significant financial decisions. GlobalVaultNet Finance is not responsible for any actions taken based on the information provided by these tools.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function calculateMortgage() {
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
+            const downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
+            const interestRate = parseFloat(document.getElementById('interestRate').value) || 0;
+            const loanTerm = parseFloat(document.getElementById('loanTerm').value) || 30;
+            const propertyTax = parseFloat(document.getElementById('propertyTax').value) || 0;
+
+            const principal = loanAmount - downPayment;
+            const monthlyRate = interestRate / 100 / 12;
+            const numberOfPayments = loanTerm * 12;
+
+            let monthlyPI = 0;
+            if (interestRate === 0) {
+                monthlyPI = principal / numberOfPayments;
+            } else {
+                monthlyPI = principal * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
+                           (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+            }
+
+            const monthlyTax = propertyTax / 12;
+            const totalMonthly = monthlyPI + monthlyTax;
+            const totalCost = monthlyPI * numberOfPayments;
+            const totalInterest = totalCost - principal;
+
+            document.getElementById('monthlyPI').textContent = '$' + monthlyPI.toFixed(2);
+            document.getElementById('monthlyTax').textContent = '$' + monthlyTax.toFixed(2);
+            document.getElementById('totalMonthly').textContent = '$' + totalMonthly.toFixed(2);
+            document.getElementById('totalInterest').textContent = '$' + totalInterest.toFixed(2);
+            document.getElementById('totalCost').textContent = '$' + totalCost.toFixed(2);
+
+            document.getElementById('results').classList.add('show');
+        }
+    </script>
+</body>
+</html>

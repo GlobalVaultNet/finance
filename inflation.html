@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inflation Calculator 2026 | Free Purchasing Power & CPI Calculator</title>
+    <meta name="description" content="Free inflation calculator to see how inflation erodes purchasing power over time. Calculate future values adjusted for inflation and compare costs across different years.">
+    <meta name="keywords" content="inflation calculator, purchasing power calculator, CPI calculator, cost of living calculator, inflation rate calculator, future value inflation adjusted">
+    <meta name="author" content="GlobalVaultNet Finance">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://globalvaultnet.github.io/finance/inflation.html">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "name": "Inflation Calculator",
+        "description": "Free online inflation calculator for purchasing power and future value calculations",
+        "provider": {
+            "@type": "Organization",
+            "name": "GlobalVaultNet Finance"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is inflation and how is it measured?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Inflation is the rate at which prices for goods and services rise over time, reducing purchasing power. It's typically measured by the Consumer Price Index (CPI), which tracks price changes in a basket of common consumer goods and services. Central banks target around 2% annual inflation as healthy for economic growth."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does inflation affect my savings?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Inflation erodes the purchasing power of money over time. If your savings earn 2% interest but inflation is 3%, you're losing 1% in real terms. This is why investing in assets that outpace inflation, like stocks and real estate, is crucial for long-term wealth preservation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the historical average inflation rate?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In the United States, the historical average inflation rate since 1913 is approximately 3.1% annually. However, rates vary significantly by decade. The 1970s saw double-digit inflation, while the 2010s experienced unusually low inflation around 1.5-2% annually."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can I protect my money from inflation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Protect against inflation by investing in assets that historically outpace it: stocks, real estate, Treasury Inflation-Protected Securities (TIPS), and commodities. Avoid holding large amounts of cash for extended periods. Consider I Bonds which adjust for inflation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between nominal and real returns?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Nominal returns are the stated returns without adjusting for inflation. Real returns account for inflation, showing actual purchasing power gains. If an investment returns 8% nominally and inflation is 3%, the real return is approximately 5%. Real returns matter for long-term planning."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What causes hyperinflation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Hyperinflation occurs when prices rise extremely rapidly, typically over 50% per month. Causes include excessive money printing, loss of confidence in currency, supply shocks, and political instability. Historical examples include Weimar Germany, Zimbabwe, and Venezuela."
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .nav {
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .nav a {
+            color: #5a9;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .calculator-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .ad-container {
+            text-align: center;
+            margin: 20px 0;
+            min-height: 90px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #5a9;
+        }
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(90, 170, 153, 0.4);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 10px;
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #a5d6a7;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .result-label {
+            font-weight: 600;
+            color: #555;
+        }
+        .result-value {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 1.1rem;
+        }
+        .highlight {
+            background: #2e7d32;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .highlight .result-value {
+            color: white;
+        }
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .content-section h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .content-section h3 {
+            color: #555;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+        }
+        .content-section p {
+            margin-bottom: 15px;
+            color: #444;
+            line-height: 1.8;
+        }
+        .faq-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 10px;
+            border-left: 4px solid #2e7d32;
+        }
+        .faq-item h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .faq-item p {
+            margin: 0;
+            color: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #333;
+            margin-top: 40px;
+        }
+        .disclaimer {
+            background: rgba(255,255,255,0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .calculator-card, .content-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← Back to GlobalVaultNet Finance Hub</a>
+        </div>
+
+        <div class="calculator-card">
+            <h1>Inflation Calculator</h1>
+            <p class="subtitle">See how inflation affects purchasing power over time</p>
+            
+            <div class="ad-container">
+                <script async="async" data-cfasync="false" src="https://pl28822091.effectivegatecpm.com/e9472f96295f54607e4ac09ffb523e78/invoke.js"></script>
+                <div id="container-e9472f96295f54607e4ac09ffb523e78"></div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="currentAmount">Current Amount ($)</label>
+                    <input type="number" id="currentAmount" placeholder="1000" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="inflationRate">Annual Inflation Rate (%)</label>
+                    <input type="number" id="inflationRate" placeholder="3" step="0.1" min="0" max="100">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="years">Number of Years</label>
+                    <input type="number" id="years" placeholder="20" min="1" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="historicalYear">Or Compare Historical Year</label>
+                    <input type="number" id="historicalYear" placeholder="2000" min="1913" max="2026">
+                </div>
+            </div>
+
+            <div class="ad-container">
+                <script>atOptions = {'key' : '940c50b8e7b247ca4853fb94d90731b4','format' : 'iframe','height' : 90,'width' : 728,'params' : {}};</script>
+                <script src="https://www.highperformanceformat.com/940c50b8e7b247ca4853fb94d90731b4/invoke.js"></script>
+            </div>
+
+            <button onclick="calculateInflation()">Calculate Inflation Impact</button>
+
+            <div class="results" id="results">
+                <div class="result-item">
+                    <span class="result-label">Today's Value:</span>
+                    <span class="result-value" id="todayValue">$0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Future Value Needed:</span>
+                    <span class="result-value" id="futureValueNeeded">$0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Purchasing Power Lost:</span>
+                    <span class="result-value" id="purchasingPowerLost">$0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Percentage Loss:</span>
+                    <span class="result-value" id="percentageLoss">0%</span>
+                </div>
+                <div class="result-item highlight">
+                    <span class="result-label">Equivalent Buying Power:</span>
+                    <span class="result-value" id="equivalentBuyingPower">$0</span>
+                </div>
+            </div>
+
+            <div class="ad-container">
+                <script async="async" data-cfasync="false" src="https://pl28822091.effectivegatecpm.com/e9472f96295f54607e4ac09ffb523e78/invoke.js"></script>
+                <div id="container-e9472f96295f54607e4ac09ffb523e78"></div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Understanding Inflation and Purchasing Power</h2>
+            <p>Inflation is the silent wealth eroder that affects every aspect of our financial lives. It represents the rate at which prices for goods and services increase over time, gradually reducing the purchasing power of money. What $100 could buy today will require more dollars in the future as inflation steadily pushes prices upward. Understanding inflation is essential for long-term financial planning, investment decisions, and retirement preparation.</p>
+            
+            <p>The concept of purchasing power is central to understanding inflation's impact. Purchasing power refers to how much goods and services a unit of currency can buy. As inflation rises, purchasing power falls - your dollars simply don't stretch as far. This is why simply saving money isn't enough; your savings must grow at least as fast as inflation to maintain their real value.</p>
+
+            <h3>How Inflation is Measured</h3>
+            <p>The most common measure of inflation is the Consumer Price Index (CPI), which tracks price changes in a representative basket of goods and services that typical consumers purchase. This basket includes housing, food, transportation, medical care, education, entertainment, and other categories. The Bureau of Labor Statistics collects price data monthly from thousands of retail establishments and service providers across the country.</p>
+
+            <p>Other inflation measures include the Producer Price Index (PPI), which tracks prices at the wholesale level, and the Personal Consumption Expenditures (PCE) price index, which is the Federal Reserve's preferred measure. Core inflation excludes volatile food and energy prices to show underlying inflation trends. Each measure provides different insights into price pressures in the economy.</p>
+
+            <h3>The Historical Context of Inflation</h3>
+            <p>Over the past century, inflation has averaged around 3% annually in the United States, though this masks significant variation across decades. The 1970s experienced stagflation - high inflation combined with economic stagnation - with rates reaching double digits. The Federal Reserve under Paul Volcker dramatically raised interest rates to break inflation, causing a recession but setting the stage for decades of relative price stability.</p>
+
+            <p>The 2010s saw unusually low inflation, often below the Federal Reserve's 2% target, despite strong economic growth and low unemployment. The COVID-19 pandemic and its aftermath brought new inflationary pressures, with supply chain disruptions, fiscal stimulus, and changing consumer behavior pushing prices higher. Understanding these historical patterns helps contextualize current inflation and inform expectations about the future.</p>
+
+            <h3>Protecting Your Wealth from Inflation</h3>
+            <p>Inflation protection requires holding assets that tend to appreciate as prices rise. Stocks have historically provided the best long-term inflation protection, as companies can often raise prices along with costs. Real estate also tends to perform well during inflationary periods, as property values and rents typically increase. Treasury Inflation-Protected Securities (TIPS) provide explicit inflation protection, with principal values adjusting based on CPI changes.</p>
+
+            <p>Cash and traditional bonds are most vulnerable to inflation. A bond paying 3% interest loses purchasing power if inflation runs at 4%. This is why long-term investors should minimize cash holdings and consider inflation-protected securities for fixed-income allocations. I Bonds, which adjust for inflation and are backed by the US government, offer another protective option for savers.</p>
+
+            <h3>Inflation's Impact on Different Groups</h3>
+            <p>Inflation doesn't affect everyone equally. Retirees on fixed incomes are particularly vulnerable, as their purchasing power steadily declines. Workers with strong bargaining power may negotiate wage increases that keep pace with inflation, while those in weaker positions see real income declines. Debtors benefit from inflation as they repay loans with dollars worth less than when borrowed, while creditors suffer.</p>
+
+            <p>Understanding where you fit in this landscape helps inform your inflation strategy. If you're a worker with marketable skills, focus on income growth. If you're retired, prioritize inflation-protected investments. If you have significant debt, inflation may actually work in your favor, though this shouldn't encourage irresponsible borrowing.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Frequently Asked Questions About Inflation</h2>
+            
+            <div class="faq-item">
+                <h4>What is inflation and how is it measured?</h4>
+                <p>Inflation is the rate at which prices for goods and services rise over time, reducing purchasing power. It's typically measured by the Consumer Price Index (CPI), which tracks price changes in a basket of common consumer goods and services. Central banks target around 2% annual inflation as healthy for economic growth - enough to encourage spending and investment without destabilizing the economy.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How does inflation affect my savings?</h4>
+                <p>Inflation erodes the purchasing power of money over time. If your savings earn 2% interest but inflation is 3%, you're losing 1% in real terms each year. Over decades, this can significantly reduce your wealth. This is why investing in assets that outpace inflation, like stocks and real estate, is crucial for long-term wealth preservation. Cash should be reserved for short-term needs and emergency funds.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What is the historical average inflation rate?</h4>
+                <p>In the United States, the historical average inflation rate since 1913 is approximately 3.1% annually. However, rates vary significantly by decade. The 1970s saw double-digit inflation, while the 2010s experienced unusually low inflation around 1.5-2% annually. For long-term planning, using 3% as an inflation assumption is reasonable, though actual rates may differ.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How can I protect my money from inflation?</h4>
+                <p>Protect against inflation by investing in assets that historically outpace it: stocks, real estate, Treasury Inflation-Protected Securities (TIPS), and commodities. Avoid holding large amounts of cash for extended periods. Consider I Bonds which adjust for inflation and currently offer competitive rates. Diversify across asset classes to balance growth and protection.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What is the difference between nominal and real returns?</h4>
+                <p>Nominal returns are the stated returns without adjusting for inflation. Real returns account for inflation, showing actual purchasing power gains. If an investment returns 8% nominally and inflation is 3%, the real return is approximately 5%. Real returns matter for long-term planning because they reflect actual improvements in your financial position. Always consider real returns when evaluating investment performance.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What causes hyperinflation?</h4>
+                <p>Hyperinflation occurs when prices rise extremely rapidly, typically over 50% per month. Causes include excessive money printing to finance government spending, loss of confidence in currency, supply shocks, and political instability. Historical examples include Weimar Germany in the 1920s, Zimbabwe in the 2000s, and Venezuela in the 2010s. Hyperinflation destroys savings and can destabilize entire economies.</p>
+            </div>
+        </div>
+
+        <div class="ad-container">
+            <script>atOptions = {'key' : '940c50b8e7b247ca4853fb94d90731b4','format' : 'iframe','height' : 90,'width' : 728,'params' : {}};</script>
+            <script src="https://www.highperformanceformat.com/940c50b8e7b247ca4853fb94d90731b4/invoke.js"></script>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 GlobalVaultNet Finance. All rights reserved.</p>
+            <div class="disclaimer">
+                <p><strong>Financial Disclaimer:</strong> The calculators and content on this website are provided for informational and educational purposes only. They do not constitute financial, legal, or professional advice. Results are estimates based on the information you provide and may not reflect actual outcomes. Interest rates, market conditions, and personal circumstances vary. Always consult with qualified financial advisors, lenders, or tax professionals before making significant financial decisions. GlobalVaultNet Finance is not responsible for any actions taken based on the information provided by these tools.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function calculateInflation() {
+            const currentAmount = parseFloat(document.getElementById('currentAmount').value) || 0;
+            const inflationRate = parseFloat(document.getElementById('inflationRate').value) || 0;
+            const years = parseFloat(document.getElementById('years').value) || 0;
+
+            // Calculate future value needed to maintain purchasing power
+            const futureValueNeeded = currentAmount * Math.pow(1 + inflationRate / 100, years);
+            
+            // Calculate what today's amount will be worth in the future
+            const futureWorth = currentAmount / Math.pow(1 + inflationRate / 100, years);
+            
+            const purchasingPowerLost = currentAmount - futureWorth;
+            const percentageLoss = (purchasingPowerLost / currentAmount) * 100;
+
+            document.getElementById('todayValue').textContent = '$' + currentAmount.toFixed(2);
+            document.getElementById('futureValueNeeded').textContent = '$' + futureValueNeeded.toFixed(2);
+            document.getElementById('purchasingPowerLost').textContent = '$' + purchasingPowerLost.toFixed(2);
+            document.getElementById('percentageLoss').textContent = percentageLoss.toFixed(1) + '%';
+            document.getElementById('equivalentBuyingPower').textContent = '$' + futureWorth.toFixed(2);
+
+            document.getElementById('results').classList.add('show');
+        }
+    </script>
+</body>
+</html>

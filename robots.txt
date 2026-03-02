@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /finance/
+
+Sitemap: https://globalvaultnet.github.io/finance/sitemap.xml
